@@ -1,0 +1,34 @@
+name:                chocolateFactory
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/githubuser/chocolateFactory#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Jonas Komarek, Michael Weidmann, Constantin Ruhdorfer
+copyright:           2019 Jonas Komarek, Michael Weidmann, Constantin Ruhdorfer
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  README.md
+
+library
+  exposed-modules: Factory1 Factory2 Factory3
+  other-modules:
+      Paths_chocolateFactory
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  default-language: Haskell2010
+
+executable chocolateFactory
+  hs-source-dirs:      app
+  other-modules:
+    Paths_chocolateFactory
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  main-is:             Main.hs
+  default-language:    Haskell2010
+  build-depends:       
+      chocolateFactory
+      , base >= 4.7 && < 5
