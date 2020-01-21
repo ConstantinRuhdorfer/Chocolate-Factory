@@ -1,6 +1,7 @@
 module Factory2
     ( run
-    ) where
+    )
+where
 
 
 {-|
@@ -8,24 +9,29 @@ module Factory2
 -}
 run :: IO ()
 run = do
-    let meltedChoc = mkChoc "melted" "dark"
+    let meltedChoc  = mkChoc "melted" "dark"
     let wrappedDark = fabric meltedChoc
 
-    print ("Factory V3: Converting some delicious " ++ (show meltedChoc) ++ " to: " ++ (show wrappedDark))
-    
-data Choc = Choc 
+    print
+        (  "Factory V2: Converting some delicious "
+        ++ (show meltedChoc)
+        ++ " to: "
+        ++ (show wrappedDark)
+        )
+
+data Choc = Choc
     { state :: String -- melted, solid, piece, wrapped
     , choctype :: String -- dark, milk
     }
 
-instance Show Choc where 
+instance Show Choc where
     show (Choc state choctype) = state ++ " " ++ choctype ++ " chocolate"
 
 mkChoc :: String -> String -> Choc
-mkChoc state choctype = Choc state choctype
+mkChoc = Choc
 
 fabric :: Choc -> Choc
-fabric meltedChoc = (wrapper.cutter.mintMixer.cooler) meltedChoc
+fabric = wrapper . cutter . mintMixer . cooler
 
 cooler :: Choc -> Choc
 cooler (Choc _ choctype) = mkChoc "solid" choctype
@@ -40,4 +46,4 @@ mixer :: String -> Choc -> Choc
 mixer flavour (Choc state choctype) = mkChoc state (choctype ++ flavour)
 
 mintMixer :: Choc -> Choc
-mintMixer choc = (mixer "Mint") choc
+mintMixer = mixer "Mint"
