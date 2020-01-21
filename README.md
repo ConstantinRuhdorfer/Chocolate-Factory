@@ -25,7 +25,7 @@ or (but really the same):
 
 ```sh
 stack build
-stack exec chocolateFactory [all|day[1|...|X]]
+stack exec chocolateFactory [all|factory[1|2|3]]
 ```
 
 ## Project structure
@@ -43,5 +43,5 @@ The relevant folders are:
 
 ## Note
 
-Every solution to a puzzle is intenionally pretty self-contained eventhought they could share more code.
+Every factory is intenionally pretty self-contained even though they could share more code.
 This is to preserve readability for everyone who is interested in seeing the complete solution to one problem while being pretty unfamiliar with haskell or the structure of this project.
